@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { applicationStatusController, applyController, getAnalyticsController, getApplicationController, } from '../controller/application.controller.js';
+import upload from '../middlewares/upload.js';
+import authorize from '../middlewares/authorize.middleware.js';
+const applicationRouter = Router();
+applicationRouter.post('/applications', upload.single('cv'), applyController);
+applicationRouter.get('/applications', authorize, getApplicationController);
+applicationRouter.get('/applications/analytics', authorize, getAnalyticsController);
+applicationRouter.post("/applications/status", authorize, applicationStatusController);
+export default applicationRouter;
