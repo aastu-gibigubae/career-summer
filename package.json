@@ -10,7 +10,7 @@
     "build": "tsc",
     "dev": "tsx --watch src/server.ts",
     "start": "node dist/server.js",
-    "migrate": "npx prisma migrate dev",
+    "migrate": "npx prisma migrate deploy",
     "generate": "npx prisma generate",
     "seed": "npx prisma db seed",
     "lint": "eslint .",
