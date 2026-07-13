@@ -1,6 +1,6 @@
 node_modules
 *.env
 *.key
-/generated/prisma
-/generated/prisma
+/dist/generated/prisma
+/src/generated/prisma
 src
