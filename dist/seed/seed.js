@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import prisma from '../config/db.js';
 async function main() {
     const skills = [
-        'Flutter with TypeScript',
+        'Flutter',
         'React with TypeScript',
         'Express with TypeScript',
         'UI/UX Design',
