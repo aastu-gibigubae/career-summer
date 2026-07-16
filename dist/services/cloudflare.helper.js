@@ -8,7 +8,8 @@ const cloudFlareHelper = async (file) => {
         Bucket: envConfig.R2_BUCKET_NAME,
         Key: fileName,
         Body: file.buffer,
-        ContentType: file.mimetype,
+        ContentType: "application/pdf",
+        ContentDisposition: 'attachment; filename="cv.pdf"',
         CacheControl: 'public, max-age=31536000, s-maxage=31536000, immutable',
     }));
     return `${envConfig.R2_PUBLIC_URL}/${fileName}`;
