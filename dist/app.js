@@ -5,9 +5,23 @@ import applicationRouter from './routes/application.route.js';
 import authRouter from './routes/auth.route.js';
 import cookieParser from 'cookie-parser';
 const app = express();
+app.use(cors({
+    origin: (origin, callback) => {
+        const allowed = [
+            'http://localhost:5173',
+            'https://career.aastugibigubae.com',
+        ];
+        if (!origin || allowed.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed'));
+        }
+    },
+    credentials: true,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
 app.use(cookieParser());
 app.use('/api/v1', applicationRouter);
 app.use('/api/v1', authRouter);
