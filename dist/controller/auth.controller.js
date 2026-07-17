@@ -26,11 +26,10 @@ export const loginController = async (req, res, next) => {
         const isProd = envConfig.NODE_ENV === 'production';
         const cookieOptions = {
             httpOnly: true,
-            secure: isProd,
-            sameSite: isProd ? 'none' : 'lax',
+            secure: true, // required with SameSite=None
+            sameSite: 'none',
             path: '/',
             maxAge: 30 * 24 * 60 * 60 * 1000,
-            ...(isProd && { domain: '.aastugibigubae.com' }),
         };
         res.cookie('refresh-token', refreshToken, cookieOptions);
         res.status(200).json({
