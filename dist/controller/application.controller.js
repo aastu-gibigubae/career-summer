@@ -57,7 +57,7 @@ export const applyController = async (req, res, next) => {
 export const getApplicationController = async (req, res, next) => {
     try {
         const { name, skill, status, page = '1' } = req.query;
-        const pageSize = 10;
+        const pageSize = 6;
         const skip = (parseInt(page) - 1) * pageSize;
         const where = {};
         if (name) {
