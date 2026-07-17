@@ -24,14 +24,13 @@ export const loginController = async (req, res, next) => {
             algorithm: 'HS256',
         });
         const isProd = envConfig.NODE_ENV === 'production';
-        const cookieOptions = {
+        res.cookie('refresh-token', refreshToken, {
             httpOnly: true,
-            secure: true, // required with SameSite=None
+            secure: true,
             sameSite: 'none',
+            domain: '.aastugibigubae.com',
             path: '/',
-            maxAge: 30 * 24 * 60 * 60 * 1000,
-        };
-        res.cookie('refresh-token', refreshToken, cookieOptions);
+        });
         res.status(200).json({
             success: true,
             message: 'User Logged in Successfully',
