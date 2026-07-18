@@ -16,7 +16,7 @@ export const loginController = async (req, res, next) => {
         if (!isValidPassword)
             throw errorUtil('Invalid credentials', 401);
         const accessToken = await jwt.sign({ userId: user.id }, envConfig.JWT_SECRET, {
-            expiresIn: '15m',
+            expiresIn: '30d',
             algorithm: 'HS256',
         });
         const refreshToken = await jwt.sign({ userId: user.id }, envConfig.JWT_SECRET, {
